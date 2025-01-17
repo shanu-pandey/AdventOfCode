@@ -11,5 +11,15 @@ internal class Program
 
         var day1_part2_res = day1.SimilarityScore_Part2();
         Console.WriteLine($"Day 1 Part 2 Result is : {day1_part2_res}");
+
+        Console.WriteLine($"-------------------------------------------------------------------------------------------------");
+
+        Day2 day2 = new Day2();
+
+        var day2_res1 = day2.SafeReports_Part1();
+        Console.WriteLine($"Day 2 Part 1 Result is : {day2_res1}");
+
+        var day2_res2 = day2.TolerateOneBadLevel_Part2();
+        Console.WriteLine($"Day 2 Part 2 Result is : {day2_res2}");
     }
 }
