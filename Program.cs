@@ -4,9 +4,9 @@ internal class Program
 {
     private static void Main(string[] args)
     {
-        //Day 1
+        //Day 1 - Historian Hysteria
         {
-            Day1 day1 = new Day1();
+            Day01 day1 = new Day01();
 
             var day1_part1_res = day1.TotalDistance_Part1();
             Console.WriteLine($"Day 1 Part 1 Result is : {day1_part1_res}");
@@ -16,9 +16,9 @@ internal class Program
         }
         Console.WriteLine($"-------------------------------------------------------------------------------------------------");
 
-        //Day 2
+        //Day 2 - Red-Nosed Reports
         {
-            Day2 day2 = new Day2();
+            Day02 day2 = new Day02();
 
             var day2_res1 = day2.SafeReports_Part1();
             Console.WriteLine($"Day 2 Part 1 Result is : {day2_res1}");
@@ -28,9 +28,9 @@ internal class Program
         }
         Console.WriteLine($"-------------------------------------------------------------------------------------------------");
 
-        //Day 3
+        //Day 3 - Mull It Over
         {
-            Day3 day3 = new Day3();
+            Day03 day3 = new Day03();
 
             var day3_res1 = day3.Multiplication(day3.i_input);
             Console.WriteLine($"Day 3 Part 1 Result is : {day3_res1}");
@@ -40,8 +40,8 @@ internal class Program
         }
         Console.WriteLine($"-------------------------------------------------------------------------------------------------");
 
-        //Day 4
-        {            
+        //Day 4 - Ceres Search
+        {
         }
         Console.WriteLine($"-------------------------------------------------------------------------------------------------");
 

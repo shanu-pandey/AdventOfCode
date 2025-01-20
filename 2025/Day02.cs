@@ -1,7 +1,7 @@
 ﻿/*
---- Day 1: Historian Hysteria ---
+--- Day 2: Red-Nosed Reports ---
 
-Part 1
+--- Part One ---
 
 Fortunately, the first location The Historians want to search isn't a long walk from the Chief Historian's office.
 While the Red-Nosed Reindeer nuclear fusion/fission plant appears to contain no sign of the Chief Historian, the engineers there run up to you as soon as they see you. 
@@ -61,11 +61,11 @@ Update your analysis by handling situations where the Problem Dampener can remov
 
 namespace AdventOfCode._2025
 {
-    public class Day2
+    public class Day02
     {
         List<List<int>> input;
        
-        public Day2()
+        public Day02()
         {            
             input = new List<List<int>>();
             input.Add(new List<int> { 44, 47, 48, 49, 48 });

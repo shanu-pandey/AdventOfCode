@@ -1,7 +1,7 @@
 ﻿/*
---- Day 1: Historian Hysteria ---
+--- Day 3: Mull It Over ---
 
-Part 1
+--- Part One ---
 
 he computer appears to be trying to run a program, but its memory (your puzzle input) is corrupted. All of the instructions have been jumbled up!
 
@@ -39,11 +39,11 @@ Handle the new instructions; what do you get if you add up all of the results of
 
 namespace AdventOfCode._2025
 {
-    public class Day3
+    public class Day03
     {
         public string i_input;
 
-        public Day3()
+        public Day03()
         {
             //i_input = "xmul(2,4)&mul[3,7]!^don't()_mul(5,5)+mul(32,64](mul(11,8)undo()?mul(8,5))";
             //i_input = "xmul(2,4)%&mul[3,7]!@^do_not_mul(5,5)+mul(32,64]then(mul(11,8)mul(8,5))";
