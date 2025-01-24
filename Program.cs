@@ -50,8 +50,8 @@ internal class Program
             var res_part1 = day04.CountXmas();
             Console.WriteLine($"Day 4 part 1 Result is : {res_part1}");
 
-            var res_part2 = day04.CountXmas();
-            Console.WriteLine($"Day 4 part 1 Result is : {res_part2}");
+            var res_part2 = day04.CountXmas_Part2();
+            Console.WriteLine($"Day 4 part 2 Result is : {res_part2}");
 
             Console.WriteLine($"-------------------------------------------------------------------------------------------------");
         }        

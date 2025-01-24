@@ -68,6 +68,8 @@ Flip the word search from the instructions back over to the word search side and
 
 */
 
+using System.Text;
+
 namespace AdventOfCode._2025
 {
     public class Day04
@@ -130,6 +132,58 @@ namespace AdventOfCode._2025
                     return false;
             }
             return true;
+        }
+        
+        bool Has_Mas(int row, int col)
+        {
+            if (row - 1 <0 || col -1 <0 || row +1 >= rows || col +1 >= cols)
+                return false;
+            
+            int c1i1 = row - 1;
+            int c1j1 = col - 1;
+            int c1i2 = row + 1;
+            int c1j2 = col + 1;
+
+            int c2i1 = row - 1;
+            int c2j1 = col + 1;            
+            int c2i2 = row + 1;
+            int c2j2 = col - 1;
+
+            StringBuilder c1 = new StringBuilder();
+            c1.Append(input[c1i1][c1j1]);
+            c1.Append('A');
+            c1.Append(input[c1i2][c1j2]);
+
+            StringBuilder c2 = new StringBuilder();
+            c2.Append(input[c2i1][c2j1]);
+            c2.Append('A');
+            c2.Append(input[c2i2][c2j2]);
+
+            if (c1.ToString().Equals("MAS") || c1.ToString().Equals("SAM"))
+                if (c2.ToString().Equals("MAS") || c2.ToString().Equals("SAM"))
+                    return true;
+            
+            return false;
+        }
+        
+        public long CountXmas_Part2()
+        {
+            long res = 0;
+
+            for (int i = 0; i < rows; i++)
+            {
+                //check wach character
+                for (int j = 0; j < cols; j++)
+                {
+                    //go each direction
+                    if (input[i][j] == 'A')
+                    {
+                        if (Has_Mas(i,j))
+                            res++;
+                    }
+                }
+            }
+            return res;
         }
     }
 }
