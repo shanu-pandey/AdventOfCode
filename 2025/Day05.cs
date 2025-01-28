@@ -186,7 +186,7 @@ namespace AdventOfCode._2025
             return res;
         }
 
-        void DFS(int u, Dictionary<int, bool> visited, Stack<int> stack)
+        void TopologicalSort_DFS(int u, Dictionary<int, bool> visited, Stack<int> stack)
         {
             visited[u] = true;
 
@@ -196,7 +196,7 @@ namespace AdventOfCode._2025
                 foreach (var edge in edges)
                 {
                     if (visited.ContainsKey(edge) && !visited[edge])
-                        DFS(edge, visited, stack);
+                        TopologicalSort_DFS(edge, visited, stack);
                 }
             }
             stack.Push(u);
@@ -218,17 +218,16 @@ namespace AdventOfCode._2025
                     for (int i=0; i<update.Count; i++)
                     {
                         if (!visited[update[i]])
-                            DFS(update[i], visited, stack);
+                            TopologicalSort_DFS(update[i], visited, stack);
                     }
 
-                    List<int> correctlyOrderedList = new List<int>();
                     //here we will get topo sorted list
-
+                    List<int> correctlyOrderedList = new List<int>();
+                    
                     while (stack.Count > 0)
                     {
                         int top = stack.Pop();
-                        if (update.Contains(top))
-                            correctlyOrderedList.Add(top);
+                        correctlyOrderedList.Add(top);                       
                     }
 
                     int count = correctlyOrderedList.Count;
