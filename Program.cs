@@ -54,10 +54,19 @@ internal class Program
             Console.WriteLine($"Day 4 part 2 Result is : {res_part2}");
 
             Console.WriteLine($"-------------------------------------------------------------------------------------------------");
-        }        
+        }
 
-        //Day 5
+        //Day 5 - Print Queue
         {
+            Day05 day05 = new Day05();
+
+            var res_part1 = day05.SumCorrectlyOrderedMiddlPage();
+            Console.WriteLine($"Day 5 part 1 Result is : {res_part1}");
+
+            var res_part2 = day05.SumAfterCorrectlyOrderingIncorrectUpdates();
+            Console.WriteLine($"Day 5 part 2 Result is : {res_part2}");
+
+            Console.WriteLine($"-------------------------------------------------------------------------------------------------");
         }
         
         //Day 6
