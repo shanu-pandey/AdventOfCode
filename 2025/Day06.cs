@@ -91,15 +91,194 @@ Predict the path of the guard. How many distinct positions will the guard visit 
 
 --- Part Two ---
 
+In the above example, there are only 6 different positions where a new obstruction would cause the guard to get stuck in a loop. 
+The diagrams of these six situations use O to mark the new obstruction, 
+| to show a position where the guard moves up/down, 
+- to show a position where the guard moves left/right, 
+and + to show a position where the guard moves both up/down and left/right.
+
+Option one, put a printing press next to the guard's starting position:
+....#.....
+....+---+#
+....|...|.
+..#.|...|.
+....|..#|.
+....|...|.
+.#.O^---+.
+........#.
+#.........
+......#...
+
+Option two, put a stack of failed suit prototypes in the bottom right quadrant of the mapped area:
+....#.....
+....+---+#
+....|...|.
+..#.|...|.
+..+-+-+#|.
+..|.|.|.|.
+.#+-^-+-+.
+......O.#.
+#.........
+......#...
+
+Option three, put a crate of chimney-squeeze prototype fabric next to the standing desk in the bottom right quadrant:
+....#.....
+....+---+#
+....|...|.
+..#.|...|.
+..+-+-+#|.
+..|.|.|.|.
+.#+-^-+-+.
+.+----+O#.
+#+----+...
+......#...
+
+Option four, put an alchemical retroencabulator near the bottom left corner:
+....#.....
+....+---+#
+....|...|.
+..#.|...|.
+..+-+-+#|.
+..|.|.|.|.
+.#+-^-+-+.
+..|...|.#.
+#O+---+...
+......#...
+
+Option five, put the alchemical retroencabulator a bit to the right instead:
+....#.....
+....+---+#
+....|...|.
+..#.|...|.
+..+-+-+#|.
+..|.|.|.|.
+.#+-^-+-+.
+....|.|.#.
+#..O+-+...
+......#...
+
+Option six, put a tank of sovereign glue right next to the tank of universal solvent:
+....#.....
+....+---+#
+....|...|.
+..#.|...|.
+..+-+-+#|.
+..|.|.|.|.
+.#+-^-+-+.
+.+----++#.
+#+----++..
+......#O..
+
+It doesn't really matter what you choose to use as an obstacle so long as you and The Historians can put it into position without the guard noticing. 
+The important thing is having enough options that you can find one that minimizes time paradoxes, and in this example, there are 6 different positions you could choose.
+
+You need to get the guard stuck in a loop by adding a single new obstruction. How many different positions could you choose for this obstruction?
+
 */
 
 namespace AdventOfCode._2025
 {
     public class Day06
     {
+        char[][] grid;
+        Tuple<int, int>[] directions;
+        int rows;
+        int columns;
         public Day06()
         {
 
-        }        
+            string filePath = "C:\\Users\\shant\\Documents\\Repos\\AdventOfCode\\2025\\Input\\day6_input.txt";
+            //string filePath = "C:\\Users\\shant\\Documents\\Repos\\AdventOfCode\\2025\\Input\\day6_testInput.txt";
+            string[] lines = File.ReadAllLines(filePath);
+            rows = lines.Length;            
+            columns = lines[0].Length;
+
+            grid = new char[rows][];
+
+            for (int i = 0; i < rows; i++)
+            {
+                var currLine = lines[i];
+                grid[i] = new char[columns];
+
+                for (int j=0; j< columns; j++)
+                    grid[i][j] = currLine[j];
+            }
+
+            directions = new Tuple<int, int>[4];
+            directions[0] = new Tuple<int, int>(-1, 0);
+            directions[1] = new Tuple<int, int>(0, 1);
+            directions[2] = new Tuple<int, int>(1, 0);
+            directions[3] = new Tuple<int, int>(0, -1);
+        }
+        
+        private Tuple<int, int> GetGuardPosition()
+        {
+            for (int i=0; i< rows; i++)
+            {
+                for (int j=0; j< columns; j++)
+                {
+                    if (grid[i][j] == '^')
+                    {
+                        var pos = new Tuple<int, int>(i, j);
+                        return pos;
+                    }                        
+                }
+            }
+            return null;
+        }
+
+        private void PrintGrid()
+        {
+            for (int i=0; i< rows;i++)
+            {
+                for (int j=0; j< columns;j++)
+                {
+                    Console.Write(grid[i][j] + "   ");
+                }
+                Console.WriteLine();
+            }
+        }
+
+        public long DistinctPositions()
+        {
+            long steps = 0;
+            var startPosition = GetGuardPosition();
+            
+            var x = startPosition.Item1;
+            var y = startPosition.Item2;
+
+            int directionIndex = 0;
+           
+            while (x < rows && x > 0 && y < columns && y > 0)
+            {
+                if (x == rows - 1 || x == 0 || y == columns - 1 || y == 0)
+                {
+                    steps++;
+                    break;
+
+                }
+                    
+
+                int dirX = directions[directionIndex % 4].Item1;
+                int dirY = directions[directionIndex % 4].Item2;
+
+                x = x + dirX;
+                y = y + dirY;
+                
+                if (grid[x][y] == '#' )
+                {
+                    directionIndex++;
+                    x -= dirX;
+                    y -= dirY;
+                }
+                else if (grid[x][y] == '.')
+                {
+                    grid[x][y] = 'X';
+                    steps++;
+                }                    
+            }
+            
+            return steps;
+        }
     }
 }

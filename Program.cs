@@ -71,6 +71,15 @@ internal class Program
         
         //Day 6
         {
+            Day06 day06 = new Day06();
+
+            var res_part1 = day06.DistinctPositions();
+            Console.WriteLine($"Day 6 part 1 Result is : {res_part1}");
+
+            //var res_part2 = day06.DistinctPositions();
+            //Console.WriteLine($"Day 6 part 2 Result is : {res_part2}");
+
+            Console.WriteLine($"-------------------------------------------------------------------------------------------------");
         }
         
 
