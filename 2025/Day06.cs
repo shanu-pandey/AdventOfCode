@@ -233,7 +233,7 @@ namespace AdventOfCode._2025
             {
                 for (int j=0; j< columns;j++)
                 {
-                    Console.Write(grid[i][j] + "   ");
+                    Console.Write(grid[i][j] + " ");
                 }
                 Console.WriteLine();
             }
